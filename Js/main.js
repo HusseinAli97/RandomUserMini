@@ -2,22 +2,24 @@ const btnGenerate = document.querySelector('#generateUser');
 function fetchData() {
     showSpiner()
     fetch('https://randomuser.me/api')
-    .then((response) => {
-        hideSpiner()
-        return response.json()})
-    .then((userData) => displayUser(userData.results[0]))
+        .then((response) => response.json())
+        .then((userData) => {
+            hideSpiner()
+            displayUser(userData.results[0])
+        }
+        )
 }
-function displayUser(user){
+function displayUser(user) {
     const userData = document.getElementById('user');
-    if(user.gender === 'male') {
+    if (user.gender === 'male') {
         document.querySelector('section').style.backgroundColor = "steelblue"
-        btnGenerate.classList.replace('btn-danger','btn-primary')
-    }else{
+        btnGenerate.classList.replace('btn-danger', 'btn-primary')
+    } else {
         document.querySelector('section').style.backgroundColor = "crimson"
-        btnGenerate.classList.replace('btn-primary','btn-danger')
+        btnGenerate.classList.replace('btn-primary', 'btn-danger')
     }
-    userData.innerHTML = 
-    `
+    userData.innerHTML =
+        `
     <div class="card rounded-5 bg-dark bg-opacity-10">
     <img src="${user.picture.large}" class="card-img-bottom w-100 rounded-circle px-3" alt="...">
     <div class="card-body">
@@ -53,10 +55,10 @@ function displayUser(user){
     `
 }
 function showSpiner() {
-    document.querySelector('.spinner-border').classList.replace('d-none','d-block')
+    document.querySelector('.spinner-border').classList.replace('d-none', 'd-block')
 }
 function hideSpiner() {
-    document.querySelector('.spinner-border').classList.replace('d-block','d-none')
+    document.querySelector('.spinner-border').classList.replace('d-block', 'd-none')
 }
-btnGenerate.addEventListener("click",fetchData)
+btnGenerate.addEventListener("click", fetchData)
 fetchData()
