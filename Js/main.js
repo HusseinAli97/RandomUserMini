@@ -12,16 +12,16 @@ function fetchData() {
 function displayUser(user) {
     const userData = document.getElementById('user');
     if (user.gender === 'male') {
-        document.querySelector('section').style.backgroundColor = "steelblue"
+        document.body.style.backgroundColor = "steelblue"
         btnGenerate.classList.replace('btn-danger', 'btn-primary')
     } else {
-        document.querySelector('section').style.backgroundColor = "crimson"
+        document.body.style.backgroundColor = "crimson"
         btnGenerate.classList.replace('btn-primary', 'btn-danger')
     }
     userData.innerHTML =
         `
     <div class="card rounded-5 bg-dark bg-opacity-10">
-    <img src="${user.picture.large}" class="card-img-bottom w-100 rounded-circle px-3" alt="...">
+    <img src="${user.picture.large}" class="img-fluid rounded-circle p-5" alt="...">
     <div class="card-body">
         <h5 class="card-title text-center fw-bolder text-white">${user.name.title}: ${user.name.first} ${user.name.last}</h5>
     </div>
